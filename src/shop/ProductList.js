@@ -8,19 +8,21 @@ export class ProductList extends Component {
         }
 
         return this.props.products.map((p) => {
-            <div className="card m-1 p-1 bg-light" key={p.id}>
-                <h4>
-                    {p.name}
-                </h4>
-                <div className="badge badge-pill badge-primary float-right">
-                    £{p.price.toFixed(2)}
-                </div>
-                <div className="card-text bg-white p-1">
-                    {p.description}
-                </div>
-            </div>
+            return <div className="card m-1 p-1 bg-light" key={p.id}>
+                        <h4>
+                            {p.name}
+                        </h4>
+                        <div className="badge badge-pill badge-primary float-right">
+                            £{p.price.toFixed(2)}
+                        </div>
+                        <div className="card-text bg-white p-1">
+                            {p.description}
+                        </div>
+                   </div>
 
-        });
+        }); 
+
+        //return this.props.products.map((p) => <div key={p.id}>{p.name} {p.description}</div>);
     }
 
 

@@ -4,10 +4,11 @@ import {connect} from "react-redux";
 import {loadData} from "../data/ActionCreator";
 import {DataTypes} from "../data/Types";
 import {Shop} from "./Shop";
+//import { createStore } from "redux";
 
-const mapStateToProps = (datastore) =>
+const mapStateToProps = (dataStore) =>
 ({
-    ...dataStore{
+    ...dataStore
 });
 
 const mapDispatchToProps = 
@@ -15,21 +16,23 @@ const mapDispatchToProps =
     loadData
 }
 
-const filterProducts = ( products = [], category) => 
-(
-    !category || category == "All"
-) ? products: products.filter(p => p.categord.toLowerCase() === category.toLowerCase());
+const filterProducts = ( products = [], category = "All") => {
+            return (
+                !category || category === "All"
+            ) ? products: products.filter(p => p.category.toLowerCase() === category.toLowerCase());
+}
 
-export const ShopConnector = connect(mapStateToProps, mapDispatchToProps)
-(
+
+export const ShopConnector = connect(mapStateToProps, mapDispatchToProps) (
+    
+
     class extends Component{
         render() {
-            return 
-            <Switch>
-                <Route path="/shop/products/:category?" render={(routerProps) => <Shop {...this.props} {...routeProps} 
-                    products = {filterProducts(this.props.products, routerProps.match.params.category)}/> }/>
-                <Redirect to="/shop/products" />
-            </Switch>
+            return <Switch>
+                        <Route path="/shop/products/:category?" render={(routerProps) => <Shop {...this.props} {...routerProps} 
+                            products = {filterProducts(this.props.products, routerProps.match.params.category)}/> }/>
+                        <Redirect to="/shop/products" />
+                    </Switch>
         }
 
         componentDidMount() {
