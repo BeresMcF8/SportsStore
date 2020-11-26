@@ -5,10 +5,6 @@ import {ProductList} from "./ProductList";
 export class Shop extends Component {
 
     render() {
-        // BM
-        console.log('Shop products are:-');
-        console.dir(this.props.products);
-
         return <div className="container-fluid">
             <div className="row">
                 <div className="col bg-dark text-white">

@@ -8,4 +8,4 @@ export const data = {
         { id: 5, name: "Top England Kit", category: "Soccer", description: "ABC ED ABC", price: 340},
         { id: 6, name: "Luxury Quality Chess Set", category: "chess", description: "ABC ED ABC", price: 140}
     ]
-}
+};
