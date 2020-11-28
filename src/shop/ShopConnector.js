@@ -5,6 +5,7 @@ import {loadData} from "../data/ActionCreator";
 import {DataTypes} from "../data/Types";
 import {Shop} from "./Shop";
 import { addToCart, updateCartQuantity, removeFromCart, clearCart } from "../data/CartActionCreator";
+import {CardDetails as CartDetails} from "../shop/CardDetails";
 //import { createStore } from "redux";
 
 const mapStateToProps = (dataStore) =>
@@ -29,13 +30,23 @@ export const ShopConnector = connect(mapStateToProps, mapDispatchToProps) (
     class extends Component{
         render() {
             return <Switch>
-                        <Route path="/shop/products/:category?" render={(routerProps) => <Shop {...this.props} {...routerProps} 
-                            products = {filterProducts(this.props.products, routerProps.match.params.category)}/> }/>
+                        <Route path="/shop/products/:category?" render={(routerProps) => 
+                            <Shop {...this.props} {...routerProps} 
+                                products = {filterProducts(this.props.products, routerProps.match.params.category)}/> 
+                            }/>
+                        <Route path="/shop/cart" render= { 
+                            (routerProps) => <CartDetails {...this.props} {...routerProps} />
+                        }/>
                         <Redirect to="/shop/products" />
                     </Switch>
         }
 
         componentDidMount() {
+            this.props.loadData(DataTypes.CATEGORIES);
+            this.props.loadData(DataTypes.PRODUCTS);
+        }
+
+        componentDidUpdate() {
             this.props.loadData(DataTypes.CATEGORIES);
             this.props.loadData(DataTypes.PRODUCTS);
         }

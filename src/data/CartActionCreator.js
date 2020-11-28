@@ -1,6 +1,6 @@
 import {ActionTypes} from "./Types";
 
-export const AddToCart = (product, quantity) => ({
+export const addToCart = (product, quantity) => ({
     type: ActionTypes.CART_ADD,
     payload: {
         product,
@@ -8,7 +8,7 @@ export const AddToCart = (product, quantity) => ({
     }
 });
 
-export const UpdateCardQuantity = (product, quantity) => ({
+export const updateCartQuantity = (product, quantity) => ({
     type: ActionTypes.CART_UPDATE,
     payload: {
         product,
@@ -16,11 +16,11 @@ export const UpdateCardQuantity = (product, quantity) => ({
     }
 });
 
-export const RemoveFromCart = (product) => ({
+export const removeFromCart = (product) => ({
     type: ActionTypes.CART_REMOVE,
     payload: product
 });
 
-export const ClearCart = () => ({
+export const clearCart = () => ({
     type: ActionTypes.CART_CLEAR
 });
